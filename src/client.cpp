@@ -9,7 +9,7 @@
 #include <iostream>
 
 
-#define PORT 2007
+#define PORT 123
 
 void* sendingMsgs(int clientSocketHandle) {
     char msg[MSG_SIZE+1];
@@ -68,7 +68,7 @@ int connectServer(const char*  host, const char* port, const char* name){
 int main(int argc, char *argv[]) {
     if(argc != 4)
     {
-        fprintf(stderr, "./client [host] [port] [nickname]\nНапример, \"./client 127.0.0.1 2007 qwerty\"\n*Предупреждение: длина никнейма не должна превышать %d, иначе он будет обрезан\n*Предупреждение:сообщение не должно превышать %d, иначе оно будет обрезано\n", MAX_NICKNAME_SIZE, MSG_SIZE);
+        fprintf(stderr, "./client [host] [port] [nickname]\nНапример, \"./client 127.0.0.1 123 qwerty\"\n*Предупреждение: длина никнейма не должна превышать %d, иначе он будет обрезан\n*Предупреждение:сообщение не должно превышать %d, иначе оно будет обрезано\n", MAX_NICKNAME_SIZE, MSG_SIZE);
         return 1;
     }
 

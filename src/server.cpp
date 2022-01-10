@@ -68,12 +68,12 @@ void* handleClient(int clientSocketHandle) {
     else{
         strcpy(newClient->nickname, name);
         fprintf(stdout, "[INFO]\tПрисоединился новый пользователь! Ему был присвоен идентификатор #%d, его никнейм:%s!\n", newClient->id, newClient->nickname);
-        send(newClient->socketHandle, "[SERVER]\tДобро пожаловать в наш чатик <3", sizeof("[SERVER]\tДобро пожаловать в наш чатик <3"),0);
+        send(newClient->socketHandle, "[SERVER]\tДобро пожаловать ", sizeof("[SERVER]\tДобро пожаловать"),0);
 
         buffer[0] = '\0';
         strcat(buffer, "[SERVER]\t");
         strcat(buffer, newClient->nickname);
-        strcat(buffer, " присоединился к чатику :3");
+        strcat(buffer, " присоединился к чату");
         sendToAll(buffer);
         mutex.lock();
         clients.push_back(*newClient);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
 
     if (argc != 2)
     {
-        fprintf(stderr, "./server [port]\nНапример, \"./server 2007\"\n");
+        fprintf(stderr, "./server [port]\nНапример, \"./server 123\"\n");
         return 1;
     }
     char* port = argv[1];
